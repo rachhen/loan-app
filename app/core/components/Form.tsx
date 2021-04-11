@@ -1,6 +1,9 @@
 import { ReactNode, PropsWithoutRef } from "react"
+import { Button } from "@chakra-ui/button"
 import { Form as FinalForm, FormProps as FinalFormProps } from "react-final-form"
 import * as z from "zod"
+import { chakra } from "@chakra-ui/system"
+import { Stack } from "@chakra-ui/layout"
 export { FORM_ERROR } from "final-form"
 
 export interface FormProps<S extends z.ZodType<any, any>>
@@ -12,6 +15,7 @@ export interface FormProps<S extends z.ZodType<any, any>>
   schema?: S
   onSubmit: FinalFormProps<z.infer<S>>["onSubmit"]
   initialValues?: FinalFormProps<z.infer<S>>["initialValues"]
+  renderButton?: (submitting: boolean) => React.ReactNode
 }
 
 export function Form<S extends z.ZodType<any, any>>({
@@ -20,6 +24,7 @@ export function Form<S extends z.ZodType<any, any>>({
   schema,
   initialValues,
   onSubmit,
+  renderButton,
   ...props
 }: FormProps<S>) {
   return (
@@ -35,28 +40,30 @@ export function Form<S extends z.ZodType<any, any>>({
       }}
       onSubmit={onSubmit}
       render={({ handleSubmit, submitting, submitError }) => (
-        <form onSubmit={handleSubmit} className="form" {...props}>
-          {/* Form fields supplied as children are rendered here */}
-          {children}
+        <chakra.form onSubmit={handleSubmit} {...props}>
+          <Stack spacing={4}>
+            {/* Form fields supplied as children are rendered here */}
+            {children}
 
-          {submitError && (
-            <div role="alert" style={{ color: "red" }}>
-              {submitError}
-            </div>
-          )}
+            {submitError && <chakra.div color="red.300">{submitError}</chakra.div>}
 
-          {submitText && (
-            <button type="submit" disabled={submitting}>
-              {submitText}
-            </button>
-          )}
-
-          <style global jsx>{`
-            .form > * + * {
-              margin-top: 1rem;
-            }
-          `}</style>
-        </form>
+            {submitText && !renderButton && (
+              <Button
+                type="submit"
+                bg={"brand.400"}
+                color={"white"}
+                disabled={submitting}
+                isLoading={submitting}
+                _hover={{
+                  bg: "brand.500",
+                }}
+              >
+                {submitText}
+              </Button>
+            )}
+            {renderButton && renderButton(submitting)}
+          </Stack>
+        </chakra.form>
       )}
     />
   )

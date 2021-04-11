@@ -1,18 +1,18 @@
 import { useRouter, BlitzPage } from "blitz"
-import Layout from "app/core/layouts/Layout"
+import { NextSeo } from "next-seo"
 import { SignupForm } from "app/auth/components/SignupForm"
 
 const SignupPage: BlitzPage = () => {
   const router = useRouter()
 
   return (
-    <div>
+    <>
+      <NextSeo title="Sign Up" />
       <SignupForm onSuccess={() => router.push("/")} />
-    </div>
+    </>
   )
 }
 
 SignupPage.redirectAuthenticatedTo = "/"
-SignupPage.getLayout = (page) => <Layout title="Sign Up">{page}</Layout>
 
 export default SignupPage

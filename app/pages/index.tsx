@@ -52,7 +52,7 @@ const UserInfo = () => {
 const Home: BlitzPage = () => {
   return (
     <div className="container">
-      <main>
+      {/* <main>
         <div className="logo">
           <img src="/logo.png" alt="blitz.js" />
         </div>
@@ -260,12 +260,13 @@ const Home: BlitzPage = () => {
             flex-direction: column;
           }
         }
-      `}</style>
+      `}</style> */}
     </div>
   )
 }
 
 Home.suppressFirstRenderFlicker = true
+Home.authenticate = { redirectTo: "/login" }
 Home.getLayout = (page) => <Layout title="Home">{page}</Layout>
 
 export default Home
