@@ -9,7 +9,7 @@ type PageHeaderProps = {
 }
 const PageHeader: React.FC & PageHeaderProps = ({ children }: JustChild) => {
   const getChild = (type: string) =>
-    React.Children.map(children, (child: any) => child.type.name === type && child)
+    React.Children.map(children, (child: any) => child.type.displayName === type && child)
 
   return (
     <Flex w="full" direction="column">
@@ -38,9 +38,9 @@ const Actions = ({ children }: JustChild) => {
   return <Flex ml="auto">{children}</Flex>
 }
 
-Title.name = "Title"
-Description.name = "Description"
-Actions.name = "Actions"
+Title.displayName = "Title"
+Description.displayName = "Description"
+Actions.displayName = "Actions"
 
 PageHeader.Title = Title
 PageHeader.Description = Description
