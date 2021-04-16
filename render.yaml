@@ -1,6 +1,6 @@
 services:
   - type: web
-    name: blitzapp
+    name: loan-app
     env: node
     plan: starter
     buildCommand: yarn --frozen-lockfile --prod=false &&
@@ -12,11 +12,11 @@ services:
         value: production
       - key: DATABASE_URL
         fromDatabase:
-          name: blitzapp-db
+          name: loan-db
           property: connectionString
       - key: SESSION_SECRET_KEY
         generateValue: true
 
 databases:
-  - name: blitzapp-db
+  - name: loan-db
     plan: starter
