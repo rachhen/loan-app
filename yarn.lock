@@ -983,7 +983,7 @@
   dependencies:
     "@chakra-ui/utils" "^1.5.1"
 
-"@chakra-ui/react@1.5.0":
+"@chakra-ui/react@1.5.0", "@chakra-ui/react@^1.1.6":
   version "1.5.0"
   resolved "https://registry.yarnpkg.com/@chakra-ui/react/-/react-1.5.0.tgz#bf3326e2c1ff1da8a1e05a933d369af702cf4ad8"
   integrity sha512-bk4ZmP+gpC78kD4YoAoFM7VFhyCS45vCQu2k8EsGySiFRGAVREo3y4Gw2FnZ/sL59UnwvJrKemIns71qdiKW9w==
@@ -1203,6 +1203,16 @@
   dependencies:
     "@chakra-ui/utils" "1.5.1"
 
+"@choc-ui/paginator@1.1.1":
+  version "1.1.1"
+  resolved "https://registry.yarnpkg.com/@choc-ui/paginator/-/paginator-1.1.1.tgz#ea80b1a7427cef9cc4f1d353d0d6aca01c0ecae1"
+  integrity sha512-wmtekcmYVromtOo1JRKpmHth996NJ9rVouwpHwBj9042xY1CVHqZGLpYYCF22TvBNM6WfVDPStC4Y84YAic3AQ==
+  dependencies:
+    "@chakra-ui/react" "^1.1.6"
+    "@emotion/react" "^11.1.4"
+    "@emotion/styled" "^11.0.0"
+    framer-motion "^3.2.2-rc.1"
+
 "@cnakazawa/watch@^1.0.3":
   version "1.0.4"
   resolved "https://registry.yarnpkg.com/@cnakazawa/watch/-/watch-1.0.4.tgz#f864ae85004d0fcab6f50be9141c4da368d1656a"
@@ -1269,7 +1279,7 @@
   resolved "https://registry.yarnpkg.com/@emotion/memoize/-/memoize-0.7.5.tgz#2c40f81449a4e554e9fc6396910ed4843ec2be50"
   integrity sha512-igX9a37DR2ZPGYtV6suZ6whr8pTFtyHL3K/oLUotxpSVO2ASaprmAe2Dkq7tBo7CRY7MMDrAa9nuQP9/YG8FxQ==
 
-"@emotion/react@11.1.5":
+"@emotion/react@11.1.5", "@emotion/react@^11.1.4":
   version "11.1.5"
   resolved "https://registry.yarnpkg.com/@emotion/react/-/react-11.1.5.tgz#15e78f9822894cdc296e6f4e0688bac8120dfe66"
   integrity sha512-xfnZ9NJEv9SU9K2sxXM06lzjK245xSeHRpUh67eARBm3PBHjjKIZlfWZ7UQvD0Obvw6ZKjlC79uHrlzFYpOB/Q==
@@ -1298,7 +1308,7 @@
   resolved "https://registry.yarnpkg.com/@emotion/sheet/-/sheet-1.0.1.tgz#245f54abb02dfd82326e28689f34c27aa9b2a698"
   integrity sha512-GbIvVMe4U+Zc+929N1V7nW6YYJtidj31lidSmdYcWozwoBIObXBnaJkKNDjZrLm9Nc0BR+ZyHNaRZxqNZbof5g==
 
-"@emotion/styled@11.3.0":
+"@emotion/styled@11.3.0", "@emotion/styled@^11.0.0":
   version "11.3.0"
   resolved "https://registry.yarnpkg.com/@emotion/styled/-/styled-11.3.0.tgz#d63ee00537dfb6ff612e31b0e915c5cf9925a207"
   integrity sha512-fUoLcN3BfMiLlRhJ8CuPUMEyKkLEoM+n+UyAbnqGEsCd5IzKQ7VQFLtzpJOaCD2/VR2+1hXQTnSZXVJeiTNltA==
@@ -2252,6 +2262,13 @@
   version "15.7.3"
   resolved "https://registry.yarnpkg.com/@types/prop-types/-/prop-types-15.7.3.tgz#2ab0d5da2e5815f94b0b9d4b95d1e5f243ab2ca7"
   integrity sha512-KfRL3PuHmqQLOG+2tGpRO26Ctg+Cq1E01D2DMriKEATHgWLfeNDmq9e29Q9WIky0dQ3NPkd1mzYH8Lm936Z9qw==
+
+"@types/react-table@7.0.29":
+  version "7.0.29"
+  resolved "https://registry.yarnpkg.com/@types/react-table/-/react-table-7.0.29.tgz#af2c82f2d6a39be5bc0f191b30501309a8db0949"
+  integrity sha512-RCGVKGlTDv3jbj37WJ5HhN3sPb0W/2rqlvyGUtvawnnyrxgI2BGgASvU93rq2jwanVp5J9l1NYAeiGlNhdaBGw==
+  dependencies:
+    "@types/react" "*"
 
 "@types/react-test-renderer@>=16.9.0":
   version "17.0.1"
@@ -5200,6 +5217,24 @@ framer-motion@4.1.3:
     tslib "^2.1.0"
   optionalDependencies:
     "@emotion/is-prop-valid" "^0.8.2"
+
+framer-motion@^3.2.2-rc.1:
+  version "3.10.6"
+  resolved "https://registry.yarnpkg.com/framer-motion/-/framer-motion-3.10.6.tgz#67737ef05ed0408860751d81c919770ac831b394"
+  integrity sha512-OxOtKgQS4km9a8dm0IMBtNNp4f0DiHfQ/IzxKs818+Kg9V/Ve/pRUJ2dtWBb6+W4lIPNLgRSpbOwOACVj15XcQ==
+  dependencies:
+    framesync "5.2.0"
+    hey-listen "^1.0.8"
+    popmotion "9.3.1"
+    style-value-types "4.1.1"
+    tslib "^1.10.0"
+  optionalDependencies:
+    "@emotion/is-prop-valid" "^0.8.2"
+
+framesync@5.2.0:
+  version "5.2.0"
+  resolved "https://registry.yarnpkg.com/framesync/-/framesync-5.2.0.tgz#f14480654cd05a6af4c72c9890cad93556841643"
+  integrity sha512-dcl92w5SHc0o6pRK3//VBVNvu6WkYkiXmHG6ZIXrVzmgh0aDYMDAaoA3p3LH71JIdN5qmhDcfONFA4Lmq22tNA==
 
 framesync@5.3.0:
   version "5.3.0"
@@ -8639,6 +8674,16 @@ pnp-webpack-plugin@1.6.4:
   dependencies:
     ts-pnp "^1.1.6"
 
+popmotion@9.3.1:
+  version "9.3.1"
+  resolved "https://registry.yarnpkg.com/popmotion/-/popmotion-9.3.1.tgz#134319ed4b9b8e3ec506c99064f7b2f14bc05781"
+  integrity sha512-Qozvg8rz2OGeZwWuIjqlSXqqgWto/+QL24ll8sAAc0n71KY/wvN1W4sAASxTuHv8YWdDnk9u9IdadyPo2DGvDA==
+  dependencies:
+    framesync "5.2.0"
+    hey-listen "^1.0.8"
+    style-value-types "4.1.1"
+    tslib "^1.10.0"
+
 popmotion@9.3.5:
   version "9.3.5"
   resolved "https://registry.yarnpkg.com/popmotion/-/popmotion-9.3.5.tgz#e821aff3424a021b0f2c93922db31c55cfe64149"
@@ -9157,6 +9202,11 @@ react-style-singleton@^2.1.0:
     get-nonce "^1.0.0"
     invariant "^2.2.4"
     tslib "^1.0.0"
+
+react-table@7.6.3:
+  version "7.6.3"
+  resolved "https://registry.yarnpkg.com/react-table/-/react-table-7.6.3.tgz#76434392b3f62344bdb704f5b227c2f29c1ffb14"
+  integrity sha512-hfPF13zDLxPMpLKzIKCE8RZud9T/XrRTsaCIf8zXpWZIZ2juCl7qrGpo3AQw9eAetXV5DP7s2GDm+hht7qq5Dw==
 
 react-test-renderer@17.0.1:
   version "17.0.1"
@@ -10185,6 +10235,14 @@ strip-json-comments@^3.1.0, strip-json-comments@^3.1.1:
   version "3.1.1"
   resolved "https://registry.yarnpkg.com/strip-json-comments/-/strip-json-comments-3.1.1.tgz#31f1281b3832630434831c310c01cccda8cbe006"
   integrity sha512-6fPc+R4ihwqP6N/aIv2f1gMH8lOVtWQHoqC4yK6oSDVVocumAsfCqjkXnqiYMhmMwS/mEHLp7Vehlt3ql6lEig==
+
+style-value-types@4.1.1:
+  version "4.1.1"
+  resolved "https://registry.yarnpkg.com/style-value-types/-/style-value-types-4.1.1.tgz#15d08bd9bb17ac3f5d4a863bf9d5e4eb8e4f0686"
+  integrity sha512-cNLrl6jk+I1T18ZI2KIp/fcqKVuykcNELDrOz7y+TYZR97xmNdN0ewupURvVFnQxVrRJv98TMBq92VMsggq3kw==
+  dependencies:
+    hey-listen "^1.0.8"
+    tslib "^1.10.0"
 
 style-value-types@4.1.4:
   version "4.1.4"

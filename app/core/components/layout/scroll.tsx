@@ -3,7 +3,7 @@ import Scrollbar from "react-scrollbars-custom"
 
 const Scroll = ({ children }: any) => {
   return (
-    <Box pos="fixed" boxSize="full">
+    <Box pos="inherit" boxSize="full">
       <Scrollbar
         contentProps={{
           renderer: (props) => {

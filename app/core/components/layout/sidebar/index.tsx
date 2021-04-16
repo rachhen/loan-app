@@ -16,6 +16,7 @@ const Sidebar = () => {
   const { isOpen } = useContext(NavContext)
   const NavAction = isOpen ? CollapsedItem : NavItem
   const IntegrationAction = isOpen ? CollapsedItem : IntegrationItem
+  const currentRoute = router.route.split("/").filter((r) => r !== "")
 
   return (
     <Stack
@@ -32,7 +33,15 @@ const Sidebar = () => {
       overflowX={isOpen ? "initial" : "clip"}
     >
       {routes.map((props, rid) => (
-        <NavAction key={`nav-item-${rid}`} active={router.pathname === props.href} {...props} />
+        <NavAction
+          key={`nav-item-${rid}`}
+          active={
+            router.route === "/" && props.href === "/"
+              ? true
+              : currentRoute.includes(props.href.replace("/", ""))
+          }
+          {...props}
+        />
       ))}
       {isOpen ? <Divider /> : <SectionDivider>Integrations</SectionDivider>}
       {integrations.map((props, iid) => (

@@ -1,27 +1,24 @@
-import { FormControl, FormErrorMessage, FormLabel, Input, InputProps } from "@chakra-ui/react"
+import { FormControl, FormErrorMessage, FormLabel, Switch } from "@chakra-ui/react"
+import { SwitchProps } from "@chakra-ui/switch"
 import React, { forwardRef, PropsWithoutRef } from "react"
 import { useField } from "react-final-form"
 
-export interface LabeledTextFieldProps extends PropsWithoutRef<InputProps> {
+export interface SwitchFieldProps extends PropsWithoutRef<SwitchProps> {
   /** Field name. */
   name: string
   /** Field label. */
   label: string
-  /** Field type. Doesn't include radio buttons and checkboxes */
-  type?: "text" | "password" | "email" | "number"
   required?: boolean
   readonly?: boolean
   disabled?: boolean
 }
 
-export const LabeledTextField = forwardRef<HTMLInputElement, LabeledTextFieldProps>(
-  ({ name, label, readonly, required, disabled, ...props }, ref) => {
+const SwitchField = forwardRef<HTMLInputElement, SwitchFieldProps>(
+  ({ name, label, disabled, readonly, required, ...props }, ref) => {
     const {
       input,
       meta: { touched, error, invalid, submitError, submitting },
-    } = useField(name, {
-      parse: props.type === "number" ? Number : undefined,
-    })
+    } = useField(name, { type: "checkbox" })
 
     const normalizedError = Array.isArray(error) ? error.join(", ") : error || submitError
 
@@ -34,10 +31,12 @@ export const LabeledTextField = forwardRef<HTMLInputElement, LabeledTextFieldPro
         isInvalid={invalid && touched}
       >
         <FormLabel htmlFor={name}>{label}</FormLabel>
-        <Input
+        <Switch
           {...input}
-          isInvalid={touched && invalid}
+          defaultChecked={input.checked}
           disabled={submitting}
+          colorScheme="brand"
+          isInvalid={touched && invalid}
           {...props}
           ref={ref}
         />
@@ -47,4 +46,4 @@ export const LabeledTextField = forwardRef<HTMLInputElement, LabeledTextFieldPro
   }
 )
 
-export default LabeledTextField
+export default SwitchField
