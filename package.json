@@ -1,6 +1,6 @@
 {
   "name": "loan-app",
-  "version": "1.0.0",
+  "version": "0.0.1",
   "scripts": {
     "dev": "blitz dev",
     "build": "blitz build",
@@ -31,6 +31,7 @@
   "dependencies": {
     "@chakra-ui/icons": "1.0.9",
     "@chakra-ui/react": "1.5.0",
+    "@choc-ui/paginator": "1.1.1",
     "@emotion/react": "11.1.5",
     "@emotion/styled": "11.3.0",
     "@prisma/client": "~2.20.1",
@@ -46,12 +47,14 @@
     "react-final-form": "6.5.3",
     "react-icons": "4.2.0",
     "react-scrollbars-custom": "4.0.25",
+    "react-table": "7.6.3",
     "typescript": "~4.2.4",
     "zod": "1.11.13"
   },
   "devDependencies": {
     "@types/preview-email": "2.0.0",
     "@types/react": "17.0.3",
+    "@types/react-table": "7.0.29",
     "eslint": "7.24.0",
     "husky": "6.0.0",
     "lint-staged": "10.5.4",

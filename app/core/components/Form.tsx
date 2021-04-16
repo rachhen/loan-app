@@ -41,7 +41,7 @@ export function Form<S extends z.ZodType<any, any>>({
       onSubmit={onSubmit}
       render={({ handleSubmit, submitting, submitError }) => (
         <chakra.form onSubmit={handleSubmit} {...props}>
-          <Stack spacing={4}>
+          <Stack spacing={4} align="flex-start">
             {/* Form fields supplied as children are rendered here */}
             {children}
 
