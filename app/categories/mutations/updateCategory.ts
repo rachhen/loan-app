@@ -1,13 +1,6 @@
 import { resolver } from "blitz"
 import db from "db"
-import * as z from "zod"
-
-const UpdateCategory = z
-  .object({
-    id: z.number(),
-    name: z.string(),
-  })
-  .nonstrict()
+import { UpdateCategory } from "../validations"
 
 export default resolver.pipe(
   resolver.zod(UpdateCategory),
