@@ -38,8 +38,8 @@ export const EditCategory = () => {
             onSubmit={async (values) => {
               try {
                 const updated = await updateCategoryMutation({
-                  id: category.id,
                   ...values,
+                  id: category.id,
                 })
                 await setQueryData(updated)
                 toast({
