@@ -1,8 +1,9 @@
+import { MouseEventHandler } from "react"
+import { Link as NextLink } from "blitz"
 import Icon from "@chakra-ui/icon"
 import { BoxProps, LinkBox, LinkOverlay, Spacer, Stack, Text } from "@chakra-ui/layout"
 import { chakra, useColorModeValue as mode } from "@chakra-ui/system"
 import { IconType } from "react-icons"
-import { Link as NextLink } from "blitz"
 
 export type NavItemProps = {
   icon: IconType
@@ -10,9 +11,10 @@ export type NavItemProps = {
   count?: number
   href?: string
   name: string
+  onClick?: MouseEventHandler<HTMLDivElement>
 }
 
-const NavItem = ({ name, active, href, count, icon }: NavItemProps) => {
+const NavItem = ({ name, active, href, count, icon, onClick }: NavItemProps) => {
   const activeColor = mode("brand.600", "white")
   const activeProps: BoxProps = {
     color: activeColor,
@@ -21,7 +23,7 @@ const NavItem = ({ name, active, href, count, icon }: NavItemProps) => {
   }
 
   return (
-    <LinkBox>
+    <LinkBox onClick={onClick}>
       <Stack
         direction="row"
         cursor="pointer"

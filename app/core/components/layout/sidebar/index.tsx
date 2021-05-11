@@ -1,18 +1,18 @@
+import { useContext } from "react"
+import { useMutation, useRouter } from "blitz"
 import { Divider, Spacer, Stack } from "@chakra-ui/layout"
-import React, { useContext } from "react"
-
+import { FiPlus, FiPower, FiSettings } from "react-icons/fi"
+import { integrations, routes } from "app/core/routes"
+import { NavContext } from "../index"
+import logout from "app/auth/mutations/logout"
 import NavItem from "./nav-item"
 import SectionDivider from "./section-divider"
-
 import IntegrationItem from "./integration-item"
-import { FiPlus, FiPower, FiSettings } from "react-icons/fi"
-import { useRouter } from "next/router"
-import { NavContext } from "../index"
 import CollapsedItem from "./collapsed-item"
-import { integrations, routes } from "app/core/routes"
 
 const Sidebar = () => {
   const router = useRouter()
+  const [logoutMutation] = useMutation(logout)
   const { isOpen } = useContext(NavContext)
   const NavAction = isOpen ? CollapsedItem : NavItem
   const IntegrationAction = isOpen ? CollapsedItem : IntegrationItem
@@ -51,7 +51,14 @@ const Sidebar = () => {
       <Spacer />
       <Divider display={{ md: "none" }} />
       <NavAction name="Settings" icon={FiSettings} />
-      <NavAction name="Logout" icon={FiPower} />
+      <NavAction
+        name="Logout"
+        icon={FiPower}
+        onClick={async () => {
+          await logoutMutation()
+          router.push("/login")
+        }}
+      />
     </Stack>
   )
 }

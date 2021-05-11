@@ -1,9 +1,9 @@
 import { ReactNode, PropsWithoutRef } from "react"
-import { Button } from "@chakra-ui/button"
+import { Button, ButtonProps } from "@chakra-ui/button"
 import { Form as FinalForm, FormProps as FinalFormProps } from "react-final-form"
 import * as z from "zod"
 import { chakra } from "@chakra-ui/system"
-import { Stack } from "@chakra-ui/layout"
+import { Box, Stack } from "@chakra-ui/layout"
 export { FORM_ERROR } from "final-form"
 
 export interface FormProps<S extends z.ZodType<any, any>>
@@ -16,6 +16,7 @@ export interface FormProps<S extends z.ZodType<any, any>>
   onSubmit: FinalFormProps<z.infer<S>>["onSubmit"]
   initialValues?: FinalFormProps<z.infer<S>>["initialValues"]
   renderButton?: (submitting: boolean) => React.ReactNode
+  buttonProps?: ButtonProps
 }
 
 export function Form<S extends z.ZodType<any, any>>({
@@ -25,6 +26,7 @@ export function Form<S extends z.ZodType<any, any>>({
   initialValues,
   onSubmit,
   renderButton,
+  buttonProps,
   ...props
 }: FormProps<S>) {
   return (
@@ -41,25 +43,28 @@ export function Form<S extends z.ZodType<any, any>>({
       onSubmit={onSubmit}
       render={({ handleSubmit, submitting, submitError }) => (
         <chakra.form onSubmit={handleSubmit} {...props}>
-          <Stack spacing={4} align="flex-start">
+          <Stack spacing={4}>
             {/* Form fields supplied as children are rendered here */}
             {children}
 
             {submitError && <chakra.div color="red.300">{submitError}</chakra.div>}
 
             {submitText && !renderButton && (
-              <Button
-                type="submit"
-                bg={"brand.400"}
-                color={"white"}
-                disabled={submitting}
-                isLoading={submitting}
-                _hover={{
-                  bg: "brand.500",
-                }}
-              >
-                {submitText}
-              </Button>
+              <Box>
+                <Button
+                  type="submit"
+                  bg={"brand.400"}
+                  color={"white"}
+                  disabled={submitting}
+                  isLoading={submitting}
+                  _hover={{
+                    bg: "brand.500",
+                  }}
+                  {...buttonProps}
+                >
+                  {submitText}
+                </Button>
+              </Box>
             )}
             {renderButton && renderButton(submitting)}
           </Stack>
