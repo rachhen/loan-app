@@ -1,9 +1,10 @@
 {
   "name": "loan-app",
-  "version": "0.0.1",
+  "version": "0.0.3",
   "scripts": {
     "dev": "blitz dev",
     "build": "blitz build",
+    "start:production": "blitz start --port $PORT",
     "start": "blitz start",
     "studio": "blitz prisma studio",
     "lint": "eslint --ignore-path .gitignore --ext .js,.ts,.tsx .",
