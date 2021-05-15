@@ -8,11 +8,11 @@ import PageHeader from "app/core/components/page-header"
 import { Box, Button, HStack, IconButton, Stack, Tag } from "@chakra-ui/react"
 import { AddIcon, DeleteIcon, EditIcon, ViewIcon } from "@chakra-ui/icons"
 import { SampleTable } from "app/core/components/SampleTable"
+import { dateFormat } from "app/core/utils/helpers/dateFormat"
 import Pagination from "@choc-ui/paginator"
 import deleteProduct from "app/products/mutations/deleteProduct"
 import { Column } from "react-table"
 import { Product } from "db"
-import { dateFormat } from "app/core/utils/helpers/dateFormat"
 
 const ITEMS_PER_PAGE = 100
 
@@ -21,8 +21,8 @@ export const ProductsList = () => {
   const page = Number(router.query.page) || 1
   const [deleteProductMutation] = useMutation(deleteProduct)
   const [{ products, count }] = usePaginatedQuery(getProducts, {
-    orderBy: { id: "asc" },
-    skip: ITEMS_PER_PAGE * page,
+    orderBy: { id: "desc" },
+    skip: ITEMS_PER_PAGE * (page - 1),
     take: ITEMS_PER_PAGE,
   })
 

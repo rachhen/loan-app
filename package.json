@@ -36,6 +36,8 @@
     "@emotion/styled": "11.3.0",
     "@prisma/client": "2.21.2",
     "blitz": "0.33.1",
+    "cloudinary": "1.25.1",
+    "cloudinary-build-url": "0.2.1",
     "final-form": "4.20.2",
     "framer-motion": "4.1.15",
     "next-seo": "4.23.0",
