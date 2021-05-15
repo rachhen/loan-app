@@ -85,3 +85,11 @@ model Product {
   description String?
   status      Boolean
 }
+
+model Group {
+  id        Int      @id @default(autoincrement())
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  name      String
+  status    Boolean
+}
