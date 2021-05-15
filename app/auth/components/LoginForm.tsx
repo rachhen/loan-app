@@ -40,6 +40,7 @@ export const LoginForm = (props: LoginFormProps) => {
             submitText="Login"
             schema={Login}
             initialValues={{ email: "", password: "" }}
+            buttonProps={{ width: "100%" }}
             onSubmit={async (values) => {
               try {
                 await loginMutation(values)
@@ -64,6 +65,7 @@ export const LoginForm = (props: LoginFormProps) => {
                 required
               />
               <LabeledTextField
+                width="full"
                 name="password"
                 label="Password"
                 placeholder="*******"

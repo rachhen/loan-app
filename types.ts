@@ -16,3 +16,26 @@ declare module "blitz" {
     }
   }
 }
+
+export type ImageUpload = {
+  asset_id: string
+  public_id: string
+  version: string
+  version_id: string
+  signature: string
+  width: string
+  height: string
+  format: string
+  resource_type: string
+  created_at: string
+  tags: any[]
+  bytes: number
+  type: string
+  etag: string
+  placeholder: boolean
+  url: string
+  secure_url: string
+  access_mode: string
+  original_extension: string
+  original_filename: string
+}

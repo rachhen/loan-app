@@ -6,7 +6,7 @@ import { BiBasket } from "react-icons/bi"
 export const routes = [
   { name: "Dashboard", href: "/", icon: RiDashboardLine },
   { name: "Categories", href: "/categories", icon: HiOutlineChat },
-  { name: "Calendar", href: "/calendar", icon: HiOutlineCalendar },
+  { name: "Products", href: "/products", icon: HiOutlineCalendar },
   { name: "Documents", href: "/documents", icon: HiOutlineFolder },
   { name: "Store", href: "/store", icon: BiBasket },
 ]
