@@ -1,6 +1,9 @@
 const { sessionMiddleware, simpleRolesIsAuthorized } = require("blitz")
 
 module.exports = {
+  images: {
+    domains: ["res.cloudinary.com"],
+  },
   middleware: [
     sessionMiddleware({
       isAuthorized: simpleRolesIsAuthorized,

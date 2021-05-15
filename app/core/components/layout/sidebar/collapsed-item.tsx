@@ -10,10 +10,18 @@ type CollapsedItemProps = NavItemProps & {
   scheme?: string
 }
 
-const CollapsedItem = ({ name, scheme, active, href, icon, count }: CollapsedItemProps) => {
+const CollapsedItem = ({
+  name,
+  scheme,
+  active,
+  href,
+  count,
+  icon,
+  onClick,
+}: CollapsedItemProps) => {
   return (
     <Tooltip hasArrow label={name} placement="right">
-      <LinkBox display="flex" justifyContent="center">
+      <LinkBox display="flex" justifyContent="center" onClick={onClick}>
         <IconButton
           colorScheme={active ? "brand" : scheme}
           aria-label={name}
