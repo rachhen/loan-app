@@ -31,7 +31,7 @@
   },
   "dependencies": {
     "@chakra-ui/icons": "1.0.13",
-    "@chakra-ui/react": "1.6.1",
+    "@chakra-ui/react": "1.6.2",
     "@choc-ui/paginator": "3.2.0",
     "@emotion/react": "11.4.0",
     "@emotion/styled": "11.3.0",
@@ -56,7 +56,7 @@
   },
   "devDependencies": {
     "@types/preview-email": "2.0.0",
-    "@types/react": "17.0.5",
+    "@types/react": "17.0.6",
     "@types/react-table": "7.7.0",
     "eslint": "7.26.0",
     "husky": "6.0.0",
