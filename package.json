@@ -40,7 +40,7 @@
     "cloudinary": "1.25.1",
     "cloudinary-build-url": "0.2.1",
     "final-form": "4.20.2",
-    "framer-motion": "4.1.15",
+    "framer-motion": "4.1.17",
     "next-seo": "4.23.0",
     "nprogress": "0.2.0",
     "prisma": "2.21.2",
