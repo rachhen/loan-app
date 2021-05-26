@@ -34,18 +34,20 @@ const NewProductPage: BlitzPage = () => {
               initialValues={{ status: true }}
               onSubmit={async (values) => {
                 try {
-                  const formData = new FormData()
-                  formData.append("file", values.file[0])
-                  formData.append("upload_preset", "loan-app")
+                  if (values.file) {
+                    const formData = new FormData()
+                    formData.append("file", values.file[0])
+                    formData.append("upload_preset", "loan-app")
 
-                  const endpoint = "https://api.cloudinary.com/v1_1/woufu/upload"
-                  const image = await fetch(endpoint, {
-                    method: "POST",
-                    body: formData,
-                  }).then((res) => res.json())
+                    const endpoint = "https://api.cloudinary.com/v1_1/woufu/upload"
+                    const image = await fetch(endpoint, {
+                      method: "POST",
+                      body: formData,
+                    }).then((res) => res.json())
 
-                  values.image = image
-                  delete values.file
+                    values.image = image
+                    delete values.file
+                  }
                   const product = await createProductMutation(values)
                   router.push(`/products/${product.id}`)
                 } catch (error) {
