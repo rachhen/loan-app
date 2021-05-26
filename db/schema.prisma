@@ -85,3 +85,28 @@ model Product {
   description String?
   status      Boolean
 }
+
+model Group {
+  id        Int      @id @default(autoincrement())
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  name      String
+  status    Boolean
+  Loaner    Loaner[]
+}
+
+model Loaner {
+  id          Int      @id @default(autoincrement())
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+  firstName   String
+  lastName    String
+  phoneNumber String
+  photo       Json?
+  address     String
+  city        String
+  description String?
+  group       Group?   @relation(fields: [groupId], references: [id])
+  groupId     Int?
+  status      Boolean  @default(true)
+}
