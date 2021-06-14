@@ -11227,10 +11227,10 @@ zip-stream@^3.0.1:
     compress-commons "^3.0.0"
     readable-stream "^3.6.0"
 
-zod@3.0.2:
-  version "3.0.2"
-  resolved "https://registry.yarnpkg.com/zod/-/zod-3.0.2.tgz#0d8f0adbc7569e1a3c67b2cc788f81a55dc8a403"
-  integrity sha512-a+9VrxBi5CWBFq2LO5aNgbAaIRzPpBLbH4qGjSFeKd/ClLAXZq1dNFLTe9N1VDUBKxqXgHVkMlyp5MtSJylJww==
+zod@3.2.0:
+  version "3.2.0"
+  resolved "https://registry.yarnpkg.com/zod/-/zod-3.2.0.tgz#4f06fac3c74e56902eae43a47a1687bf49c9b70b"
+  integrity sha512-yvcO3FZ8URR+LliMGqaW7tlVOOTzmup3vzKEe9Ds7twyJtdhvYa7dIYr0FbD1wVfWC1OuS83vZfHtCKslPuRhA==
 
 zoom-level@^2.5.0:
   version "2.5.0"
