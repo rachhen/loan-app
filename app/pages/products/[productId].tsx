@@ -22,15 +22,7 @@ import getProduct from "app/products/queries/getProduct"
 import deleteProduct from "app/products/mutations/deleteProduct"
 import PageHeader from "app/core/components/page-header"
 import { ImageUpload } from "types"
-import buildUrl from "cloudinary-build-url"
-
-const transformations = {
-  resize: {
-    type: "fill",
-    width: 250,
-    height: 250,
-  },
-}
+import { getBuildThumbUrl } from "app/core/utils/helpers/buildUrl"
 
 export const Product = () => {
   const router = useRouter()
@@ -38,9 +30,7 @@ export const Product = () => {
   const [deleteProductMutation] = useMutation(deleteProduct)
   const [product] = useQuery(getProduct, { id: productId })
 
-  const src = product.image
-    ? buildUrl((product.image as ImageUpload).public_id, { transformations })
-    : "/noimage.png"
+  const src = getBuildThumbUrl((product.image as ImageUpload).public_id)
 
   return (
     <Fragment>

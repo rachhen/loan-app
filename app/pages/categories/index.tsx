@@ -2,7 +2,6 @@ import React, { Suspense } from "react"
 import { Link, usePaginatedQuery, useRouter, BlitzPage, useMutation } from "blitz"
 import { Box, Button, HStack, IconButton, Stack, Tag } from "@chakra-ui/react"
 import { AddIcon, DeleteIcon, EditIcon, ViewIcon } from "@chakra-ui/icons"
-import { NextSeo } from "next-seo"
 import { Category } from "db"
 import { Column } from "react-table"
 import { SampleTable } from "app/core/components/SampleTable"
@@ -12,6 +11,7 @@ import Layout from "app/core/layouts/Layout"
 import getCategories from "app/categories/queries/getCategories"
 import PageHeader from "app/core/components/page-header"
 import deleteCategory from "app/categories/mutations/deleteCategory"
+import Loading from "app/core/components/Loading"
 
 const ITEMS_PER_PAGE = 8
 
@@ -93,10 +93,9 @@ export const CategoriesList = () => {
     [deleteCategoryMutation, router]
   )
 
-  const Prev = (props) => <Button {...props}>Prev </Button>
-  const Next = (props) => <Button {...props}> Next </Button>
-
   const itemRender = (_, type) => {
+    const Prev = (props) => <Button {...props}>Prev </Button>
+    const Next = (props) => <Button {...props}> Next </Button>
     if (type === "prev") {
       return Prev
     }
@@ -106,7 +105,7 @@ export const CategoriesList = () => {
   }
 
   return (
-    <Stack spacing={4}>
+    <>
       <SampleTable columns={columns} data={categories} />
       <Pagination
         current={page}
@@ -114,43 +113,44 @@ export const CategoriesList = () => {
         pageSize={ITEMS_PER_PAGE}
         pageNeighbours={1}
         showTotal={(total) => `${total} Items`}
-        paginationProps={{ display: "flex", mb: 5 }}
+        paginationProps={{ display: "flex", mt: 5 }}
         onChange={(p) => router.push({ query: { page: p } })}
         itemRender={itemRender}
       />
-    </Stack>
+    </>
   )
 }
 
 const CategoriesPage: BlitzPage = () => {
+  const router = useRouter()
+
   return (
-    <React.Fragment>
-      <NextSeo title="Categories" />
-      <Stack spacing={4}>
-        <PageHeader>
-          <PageHeader.Title>Categories</PageHeader.Title>
-          <PageHeader.Breadcrumbs>
-            <PageHeader.Breadcrumbs.Item href="/categories">Categories</PageHeader.Breadcrumbs.Item>
-          </PageHeader.Breadcrumbs>
-          <PageHeader.Actions>
-            <Link href="/categories/new">
-              <Button as="a" leftIcon={<AddIcon />} _hover={{ cursor: "pointer" }}>
-                Add
-              </Button>
-            </Link>
-          </PageHeader.Actions>
-        </PageHeader>
-        <Box layerStyle="card" boxShadow="base" rounded="2xl" p="5">
-          <Suspense fallback={<div>Loading...</div>}>
-            <CategoriesList />
-          </Suspense>
-        </Box>
-      </Stack>
-    </React.Fragment>
+    <Stack spacing={4}>
+      <PageHeader>
+        <PageHeader.Title>Categories</PageHeader.Title>
+        <PageHeader.Breadcrumbs>
+          <PageHeader.Breadcrumbs.Item href="/categories">Categories</PageHeader.Breadcrumbs.Item>
+        </PageHeader.Breadcrumbs>
+        <PageHeader.Actions>
+          <Button
+            type="button"
+            leftIcon={<AddIcon />}
+            onClick={async () => await router.push("/categories/new")}
+          >
+            Add
+          </Button>
+        </PageHeader.Actions>
+      </PageHeader>
+      <Box layerStyle="table" boxShadow="base" rounded="2xl" p="5">
+        <Suspense fallback={<Loading />}>
+          <CategoriesList />
+        </Suspense>
+      </Box>
+    </Stack>
   )
 }
 
 CategoriesPage.authenticate = { redirectTo: "/login" }
-CategoriesPage.getLayout = (page) => <Layout>{page}</Layout>
+CategoriesPage.getLayout = (page) => <Layout title="Categories">{page}</Layout>
 
 export default CategoriesPage

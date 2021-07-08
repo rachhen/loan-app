@@ -1,5 +1,6 @@
 import { BlitzPage } from "blitz"
 import Layout from "app/core/layouts/Layout"
+import { useCurrentUser } from "app/core/hooks/useCurrentUser"
 // import { useCurrentUser } from "app/core/hooks/useCurrentUser"
 // import logout from "app/auth/mutations/logout"
 
@@ -49,6 +50,7 @@ import Layout from "app/core/layouts/Layout"
 // }
 
 const Home: BlitzPage = () => {
+  useCurrentUser()
   return (
     <div className="container">
       {/* <main>
@@ -264,7 +266,6 @@ const Home: BlitzPage = () => {
   )
 }
 
-Home.suppressFirstRenderFlicker = true
 Home.authenticate = { redirectTo: "/login" }
 Home.getLayout = (page) => <Layout title="Home">{page}</Layout>
 
