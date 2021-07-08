@@ -1,14 +1,13 @@
-// import { FaIntercom, FaJira, FaSlack } from "react-icons/fa"
-import { HiOutlineCalendar, HiOutlineChat, HiOutlineFolder } from "react-icons/hi"
+import { HiOutlineCalendar, HiOutlineChat } from "react-icons/hi"
+import { FaUser, FaMoneyBillAlt } from "react-icons/fa"
 import { RiDashboardLine } from "react-icons/ri"
-import { BiBasket } from "react-icons/bi"
 
 export const routes = [
   { name: "Dashboard", href: "/", icon: RiDashboardLine },
   { name: "Categories", href: "/categories", icon: HiOutlineChat },
   { name: "Products", href: "/products", icon: HiOutlineCalendar },
-  { name: "Loaners", href: "/loaners", icon: HiOutlineFolder },
-  { name: "Store", href: "/store", icon: BiBasket },
+  { name: "Loaners", href: "/loaners", icon: FaUser },
+  { name: "Loan", href: "/Loan", icon: FaMoneyBillAlt },
 ]
 
 export const integrations = [

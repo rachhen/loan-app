@@ -1,17 +1,17 @@
-import { Suspense } from "react"
+import { Suspense, useMemo } from "react"
 import { Link, usePaginatedQuery, useRouter, BlitzPage, useMutation } from "blitz"
-import Layout from "app/core/layouts/Layout"
-import getProducts from "app/products/queries/getProducts"
-import React from "react"
-import { NextSeo } from "next-seo"
-import PageHeader from "app/core/components/page-header"
 import { Box, Button, HStack, IconButton, Stack, Tag } from "@chakra-ui/react"
 import { AddIcon, DeleteIcon, EditIcon, ViewIcon } from "@chakra-ui/icons"
+import Pagination from "@choc-ui/paginator"
+import { Column } from "react-table"
+
+import Layout from "app/core/layouts/Layout"
+import getProducts from "app/products/queries/getProducts"
+import PageHeader from "app/core/components/page-header"
+import Loading from "app/core/components/Loading"
+import deleteProduct from "app/products/mutations/deleteProduct"
 import { SampleTable } from "app/core/components/SampleTable"
 import { dateFormat } from "app/core/utils/helpers/dateFormat"
-import Pagination from "@choc-ui/paginator"
-import deleteProduct from "app/products/mutations/deleteProduct"
-import { Column } from "react-table"
 import { Product } from "db"
 
 const ITEMS_PER_PAGE = 100
@@ -26,7 +26,7 @@ export const ProductsList = () => {
     take: ITEMS_PER_PAGE,
   })
 
-  const columns = React.useMemo<Column<Product>[]>(
+  const columns = useMemo<Column<Product>[]>(
     () => [
       {
         Header: "#",
@@ -113,7 +113,7 @@ export const ProductsList = () => {
   }
 
   return (
-    <Stack spacing={4}>
+    <>
       <SampleTable columns={columns} data={products} />
       <Pagination
         current={page}
@@ -125,39 +125,36 @@ export const ProductsList = () => {
         onChange={(p) => router.push({ query: { page: p } })}
         itemRender={itemRender}
       />
-    </Stack>
+    </>
   )
 }
 
 const ProductsPage: BlitzPage = () => {
   return (
-    <React.Fragment>
-      <NextSeo title="Products" />
-      <Stack spacing={4}>
-        <PageHeader>
-          <PageHeader.Title>Products</PageHeader.Title>
-          <PageHeader.Breadcrumbs>
-            <PageHeader.Breadcrumbs.Item href="/products">Products</PageHeader.Breadcrumbs.Item>
-          </PageHeader.Breadcrumbs>
-          <PageHeader.Actions>
-            <Link href="/products/new">
-              <Button as="a" leftIcon={<AddIcon />} _hover={{ cursor: "pointer" }}>
-                Add
-              </Button>
-            </Link>
-          </PageHeader.Actions>
-        </PageHeader>
-        <Box layerStyle="card" boxShadow="base" rounded="2xl" p="5">
-          <Suspense fallback={<div>Loading...</div>}>
-            <ProductsList />
-          </Suspense>
-        </Box>
-      </Stack>
-    </React.Fragment>
+    <Stack spacing={4}>
+      <PageHeader>
+        <PageHeader.Title>Products</PageHeader.Title>
+        <PageHeader.Breadcrumbs>
+          <PageHeader.Breadcrumbs.Item href="/products">Products</PageHeader.Breadcrumbs.Item>
+        </PageHeader.Breadcrumbs>
+        <PageHeader.Actions>
+          <Link href="/products/new">
+            <Button as="a" leftIcon={<AddIcon />} _hover={{ cursor: "pointer" }}>
+              Add
+            </Button>
+          </Link>
+        </PageHeader.Actions>
+      </PageHeader>
+      <Box layerStyle="table" boxShadow="base" rounded="2xl" p="5">
+        <Suspense fallback={<Loading />}>
+          <ProductsList />
+        </Suspense>
+      </Box>
+    </Stack>
   )
 }
 
 ProductsPage.authenticate = { redirectTo: "/login" }
-ProductsPage.getLayout = (page) => <Layout>{page}</Layout>
+ProductsPage.getLayout = (page) => <Layout title="Products">{page}</Layout>
 
 export default ProductsPage

@@ -12,6 +12,7 @@ import { Loaner } from "db"
 import { Column } from "react-table"
 import deleteLoaner from "app/loaners/mutations/deleteLoaner"
 import { SampleTable } from "app/core/components/SampleTable"
+import Loading from "app/core/components/Loading"
 
 const ITEMS_PER_PAGE = 100
 
@@ -116,7 +117,7 @@ export const LoanersList = () => {
   }
 
   return (
-    <Stack spacing={4}>
+    <>
       <SampleTable columns={columns} data={loaners} />
       <Pagination
         current={page}
@@ -128,7 +129,7 @@ export const LoanersList = () => {
         onChange={(p) => router.push({ query: { page: p } })}
         itemRender={itemRender}
       />
-    </Stack>
+    </>
   )
 }
 
@@ -152,8 +153,8 @@ const LoanersPage: BlitzPage = () => {
           </Button>
         </PageHeader.Actions>
       </PageHeader>
-      <Box layerStyle="card" boxShadow="base" rounded="2xl" p="5">
-        <Suspense fallback={<div>Loading...</div>}>
+      <Box layerStyle="table" boxShadow="base" rounded="2xl" p="5">
+        <Suspense fallback={<Loading />}>
           <LoanersList />
         </Suspense>
       </Box>
