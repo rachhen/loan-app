@@ -30,7 +30,7 @@
     ]
   },
   "dependencies": {
-    "@chakra-ui/icons": "1.0.13",
+    "@chakra-ui/icons": "1.0.14",
     "@chakra-ui/react": "1.6.4",
     "@choc-ui/paginator": "3.2.0",
     "@emotion/react": "11.4.0",
