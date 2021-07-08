@@ -36,7 +36,7 @@
     "@emotion/react": "11.4.0",
     "@emotion/styled": "11.3.0",
     "@prisma/client": "2.26.0",
-    "blitz": "0.38.2",
+    "blitz": "0.38.4",
     "cloudinary": "1.26.1",
     "cloudinary-build-url": "0.2.1",
     "final-form": "4.20.2",
@@ -57,7 +57,7 @@
   "devDependencies": {
     "@types/preview-email": "2.0.0",
     "@types/react": "17.0.13",
-    "@types/react-table": "7.7.1",
+    "@types/react-table": "7.7.2",
     "eslint": "7.29.0",
     "husky": "6.0.0",
     "lint-staged": "11.0.0",
