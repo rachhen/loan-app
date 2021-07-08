@@ -37,7 +37,7 @@
     "@emotion/styled": "11.3.0",
     "@prisma/client": "2.26.0",
     "blitz": "0.38.4",
-    "cloudinary": "1.26.1",
+    "cloudinary": "1.26.2",
     "cloudinary-build-url": "0.2.1",
     "final-form": "4.20.2",
     "framer-motion": "4.1.17",
