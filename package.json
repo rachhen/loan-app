@@ -30,8 +30,8 @@
     ]
   },
   "dependencies": {
-    "@chakra-ui/icons": "1.0.13",
-    "@chakra-ui/react": "1.6.4",
+    "@chakra-ui/icons": "1.0.14",
+    "@chakra-ui/react": "1.6.5",
     "@choc-ui/paginator": "3.2.0",
     "@emotion/react": "11.4.0",
     "@emotion/styled": "11.3.0",
@@ -56,10 +56,10 @@
   },
   "devDependencies": {
     "@types/preview-email": "2.0.0",
-    "@types/react": "17.0.13",
+    "@types/react": "17.0.14",
     "@types/react-table": "7.7.1",
     "eslint": "7.29.0",
-    "husky": "6.0.0",
+    "husky": "7.0.1",
     "lint-staged": "11.0.0",
     "prettier": "2.3.2",
     "prettier-plugin-prisma": "0.13.2",
