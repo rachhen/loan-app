@@ -43,7 +43,7 @@
     "framer-motion": "4.1.17",
     "next-seo": "4.26.0",
     "nprogress": "0.2.0",
-    "prisma": "2.26.0",
+    "prisma": "2.27.0",
     "react": "0.0.0-experimental-6a589ad71",
     "react-dom": "0.0.0-experimental-6a589ad71",
     "react-error-boundary": "3.1.3",
